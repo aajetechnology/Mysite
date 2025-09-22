@@ -19,7 +19,12 @@
     {% for post in posts %}
       <article class="blog-card">
         <a href="{% url 'post_detail' post.id %}" class="blog-image">
-          <img src="{{ post.image.url }}" alt="{{ post.title }}">
+          {% if post.image %}
+  <img src="{{ post.image.url }}" alt="{{ post.title }}">
+{% else %}
+  <img src="{% static 'images/default.jpg' %}" alt="No image available">
+{% endif %}
+
         </a>
         <div class="blog-content">
           <h2 class="blog-title">
