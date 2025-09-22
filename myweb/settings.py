@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-wrcfhnvq#v&$916=6sb90%l%1mxo=xl-git@f2@2o!d3=14jtf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["prince-code.onrender.com", "localhost", "127.0.0.1"]
 
 
 # Application definition
