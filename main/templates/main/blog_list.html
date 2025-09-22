@@ -1,0 +1,39 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/index.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;700&display=swap" rel="stylesheet">
+{% endblock %}
+
+
+
+
+{% block content %}    
+
+
+<section class="blog-list">
+  <h1 class="section-title">Latest Posts</h1>
+  <div class="blog-grid">
+    {% for post in posts %}
+      <article class="blog-card">
+        <a href="{% url 'post_detail' post.id %}" class="blog-image">
+          <img src="{{ post.image.url }}" alt="{{ post.title }}">
+        </a>
+        <div class="blog-content">
+          <h2 class="blog-title">
+            <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
+          </h2>
+          <p class="blog-excerpt">{{ post.excerpt }}</p>
+          <div class="blog-meta">
+            <span class="blog-date">{{ post.created_at|date:"M d, Y" }}</span>
+            <a href="{% url 'post_detail' post.id %}" class="read-more">Read More →</a>
+          </div>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
+

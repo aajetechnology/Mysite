@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	
+	<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;700&display=swap" rel="stylesheet">
+	<title>{% block title %}Prince Code{% endblock %}</title>
+
+
+</head>
+<body>
+	  <!-- Animated Grid Background -->
+    <div class="grid-bg"></div>
+    <div class="gradient-overlay"></div>
+    <div class="scanlines"></div>
+
+    <!-- Animated Shapes -->
+    <div class="shapes-container">
+        <div class="shape shape-circle"></div>
+        <div class="shape shape-triangle"></div>
+        <div class="shape shape-square"></div>
+    </div>
+
+    <!-- Floating Particles -->
+    <div id="particles"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo-link">
+                <svg class="logo-svg" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FF5E00;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#00B2FF;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                   
+                </svg>
+                <span class="logo-text">Prince Code</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="{% url 'index' %}#home" class="nav-link">Home</a></li>
+                <li><a href="{% url 'index' %}#features" class="nav-link">Features</a></li>
+                <li><a href="{% url 'index' %}#about" class="nav-link">About</a></li>
+                <li><a href="{% url 'index' %}#contact" class="nav-link">Contact</a></li>
+
+                <li><a href="{% url 'post_list' %}">Blog</a></li>
+
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+{% block content %}
+
+{% endblock %}
+
+
+</body>
+
+<script src="{% static 'js/index.js' %}"></script>
+</html>

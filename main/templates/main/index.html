@@ -1,0 +1,227 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<script src="{% static 'js/index.js' %}"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<title>{% block title %}Prince Code{% endblock %}</title>
+
+{% block content %}
+<!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="text-rotator">
+                <div class="text-set active">
+                    <h1 class="glitch-text" data-text="FUTURE IS NOW">MY Name Is </h1>
+                    <p class="subtitle"></p>
+                </div>
+                <div class="text-set">
+                    <h1 class="glitch-text" data-text="BEYOND LIMITS"> Emmanuel O Agbaje </h1>
+
+                    <p class="subtitle"></p>
+                </div>
+                <div class="text-set">
+                    <h1 class="glitch-text" data-text="ELECTRIC DREAMS">But call me Prince Code</h1>
+                    <p class="subtitle"></p>
+                </div>
+            </div>
+        </div>
+        <div class="cta-container">
+            <a href="#about" class="cta-button cta-primary">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Features Section with Tabs -->
+    <section class="features" id="features">
+        <h2 class="section-title">My Skilles </h2>
+        <div class="features-container">
+            <div class="feature-tabs">
+                <div class="tab-item active" >
+                    <span class="tab-icon"> <img src=" {% static 'images/python.png'%} "> </span>
+                    <span>80%</span>
+                </div>
+                <div  >
+                    <span class="tab-icon"><img src=" {%static 'images/js.png'%} "></span>
+                    <span>60%</span>
+                </div>
+                <div  >
+                    <span class="tab-icon"> <img src=" {% static 'images/react.png'%} "></span>
+                    <span>50%</span>
+                </div>
+                <div  >
+                    <span class="tab-icon"><img src="{% static 'images/html.png'%}"></span>
+                    <span>90%</span>
+                </div>
+                <div  >
+                    <span class="tab-icon"><img src="{%static 'images/css.png'%}"></span>
+                    <span>90%</span>
+                </div>
+                <div >
+                    <span class="tab-icon"> Content Writing </span>
+                    <span>90%</span>
+                </div>
+            </div>
+            <div class="feature-content">
+                <div class="content-panel active" id="performance">
+                    <h3>Working Experience</h3>
+                    <p>I have 5 years of experience as a programmer and 3 years as a content writer. My expertise spans web and mobile development, backend solutions, and data science, where I work with data to extract insights and build intelligent applications. Alongside programming, I create engaging articles and digital content, combining technical knowledge with clear communication to deliver impactful results.</p>
+                    <ul class="feature-list">
+                        <li> <strong>What I Offer</strong></li>
+                        <li>Freelancing services in web, mobile, and data-driven projects</li>
+                        <li>Internship opportunities to learn, collaborate, and grow</li>
+                        <li>A blend of technical expertise and communication skills for impactful solutions</li>
+                    </ul>
+                </div>
+                <div class="content-panel" id="security">
+                    <h3>Military-Grade Security</h3>
+                    <p>Your data is protected by the most advanced encryption protocols available. Multi-layered security ensures complete protection against cyber threats. You may tell your friends about TemplateMo free css website and how easy it is.</p>
+                    
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Core Expertise/Value</h2>
+                <p>I specialize in web and mobile development, data science, and content creation, with over 5 years of programming experience and 3 years in writing.</p> My expertise includes developing scalable applications, analyzing data for smarter decision-making, and creating clear, engaging content. By blending technical skills with strong communication, I deliver solutions that are innovative, user-friendly, and impactful across digital platforms.
+            </div>
+            <div class="about-visual">
+                <img src=" {% static 'images/me.png'%} " style="height: 80%; border-radius: 10px;">
+            </div>
+        </div>
+        
+        <!-- Second row with reversed layout -->
+        <div class="about-content" style="margin-top: 80px;">
+            <div class="about-visual">
+                <div class="about-graphic-alt">
+                    <div class="hexagon"></div>
+                    <div class="hexagon"></div>
+                    <div class="hexagon"></div>
+                </div>
+            </div>
+            <div class="about-text">
+                <h2>Goal/Availability</h2>
+                <p>My goal is to use technology to create solutions that impact lives, empower businesses, and make innovation more suitable for humanity.</p> I am open to freelancing, collaborations, and internship opportunities, where I can apply my skills in programming, mobile development, and data science to solve real-world problems. Beyond coding, I strive to bring creativity and value to every project I work on.
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+
+<script>
+   (function(){
+      emailjs.init("ggcU7yPDwr5ksdRft"); // Replace with your EmailJS public key
+   })();
+</script>
+
+            </div>
+            <div class="contact-info">
+                <h3>Connect With Me</h3>
+                <div class="info-item">
+                    <div class="info-icon">📧</div>
+                    <div class="info-details">
+                        <h4>Email</h4>
+                        <p>eitech222444@gmail.com</p>
+                        <p>aajetechnology@gmail.com</p>
+                        <p>emmanurloluwatofunmiagbaje@gmail.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon">📱</div>
+                    <div class="info-details">
+                        <h4>Phone</h4>
+                        <p>+234 9121152283</p>
+                        <p>+234 9160338736</p>
+                    </div>
+                  
+                </div>
+                  <div class="info-item">
+                		<div class="info-icon"> <img src="{% static 'images/whatsapp.png'%}"> </div>
+                    <div class="info-details">
+                        <h4>Phone</h4>
+                        <p>+234 9121152283</p>
+                   			</div>
+                  	</div>
+                  	<div class="info-item">
+                    	<div class="info-icon"> <img src="{% static 'images/github.png'%}"> </div>
+                    		<div class="info-details">
+                        	<h4></h4>
+                        	<p> <a href="https://github.com/aajetechnology" style="color:#fff; text-decoration: none;" >Github</a></p>
+                    	</div>
+                   
+                    </div>
+                    <div class="info-item">
+                    	<div class="info-icon"> <img src="{% static 'images/instagram.png'%}"> </div>
+                    		<div class="info-details">
+                        		<h4></h4>
+                        	<p> <a href="https://www.instagram.com/princ_ecode/" style="color:#fff; text-decoration: none;"> Instagram </a> </p>
+                   
+                    	</div>
+                    </div>
+                    <div class="info-item">
+                    	<div class="info-icon"> <img src="{% static 'images/x.png'%}"> </div>
+                    		<div class="info-details">
+                        	<h4></h4>
+                        	<p> <a href="https://x.com/PrinceCode001" style="color:#fff; text-decoration: none;"> X</a> </p>
+                        </div>
+                   
+                    </div>
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-details">
+                        <h4>Location</h4>
+                        <p>Abuja Nigeria </p>
+                    </div>
+                </div>
+                
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#careers">Careers</a>
+            </div>
+            
+        </div>
+    </footer>
+<script src="templatemo-electric-scripts.js"></script>
+</body>
+</html>
+{% endblock %}

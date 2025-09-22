@@ -1,0 +1,42 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Blog Detail{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/index.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<article class="blog-detail">
+  <header class="detail-header">
+    <h1 class="detail-title">{{ post.title }}</h1>
+    <p class="detail-meta">
+      Published on {{ post.created_at|date:"F d, Y" }} by Admin
+    </p>
+  </header>
+  
+  <div class="detail-image">
+    <img src="{{ post.image.url }}" alt="{{ post.title }}">
+  </div>
+  
+  <div class="detail-body">
+    {{ post.content|safe }}
+
+    {% if post.link %}
+  <div class="external-link">
+    <a href="{{ post.link }}" target="_blank" rel="noopener noreferrer" class="cta-button">
+      🔗 Visit Related Link
+    </a>
+  </div>
+{% endif %}
+  </div>
+  
+
+  <footer class="detail-footer">
+    <a href="{% url 'post_list' %}" class="cta-button cta-secondary">← Back to Blog</a>
+  </footer>
+</article>
+{% endblock %}
