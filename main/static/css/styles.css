@@ -1461,4 +1461,26 @@ label {
     color: white;
     box-shadow: 0 0 8px rgba(255, 94, 0, 0.6);
     border-color: transparent;
+}/* Default button style */
+.cta-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* On small screens (max width 600px for example) */
+@media (max-width: 600px) {
+  .cta-button {
+    padding: 8px 16px;   /* smaller padding */
+    font-size: 14px;     /* smaller text */
+    border-radius: 6px;  /* adjust radius */
+  }
+
+  .cta-container {
+    display: flex;
+    flex-direction: column; /* stack vertically if needed */
+    gap: 10px;
+  }
 }
