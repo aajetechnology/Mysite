@@ -114,13 +114,34 @@ https://templatemo.com/tm-596-electric-xtra
         // });
 
         // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Add your form submission logic here
-            alert('Message sent! We\'ll get back to you soon.');
-            this.reset();
-        });
+       document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = this;
+    const body = {
+        name: form.name.value,
+        email: form.email.value,
+        subject: form.subject.value,
+        message: form.message.value
+    };
 
+    try {
+        const res = await fetch('/api/contact/', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(body)
+        });
+        const json = await res.json();
+        if (json.ok) {
+            alert('Message sent! You should receive a Telegram notification.');
+            form.reset();
+        } else {
+            alert('Failed to send message.');
+        }
+    } catch (err) {
+        console.error(err);
+        alert('Network error sending form.');
+    }
+});
         // Initialize particles
         createParticles();
 

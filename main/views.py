@@ -1,7 +1,12 @@
+import json
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import ContactForModelForm, BlogPostForm 
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
+from .telegram import telegram_messages 
 from django.shortcuts import render, get_object_or_404
 from .models import BlogPost, BlogPost
 
@@ -11,13 +16,13 @@ from .models import BlogPost, BlogPost
 def index(request):
     return render(request, 'main/index.html')
 
-
 def contact_view(request):
     if request.method == 'POST':
-        form = ContactFormModelForm(request.POST)
+        form = ContactForModelForm(request.POST)
         if form.is_valid():
             contact = form.save(commit=False)
 
+            # Send email (keep existing)
             send_mail(
                 subject=contact.subject,
                 message=f"""
@@ -27,19 +32,27 @@ def contact_view(request):
                 Message:
                 {contact.message}
                 """,
-                from_email=settings.EMAIL_HOST_USER,  # ✅ fixed typo
+                from_email=settings.EMAIL_HOST_USER,  
                 recipient_list=['emmanueloluwatofunmiagbaje@gmail.com'],
                 fail_silently=False,
             )
 
-            form.save()  # save in database (optional)
-            return redirect('success')  # ✅ fixed indentation
+            # Also send Telegram
+            from .telegram import telegram_messages
+            telegram_text = (
+                f"👋 New portfolio message\n\n"
+                f"From: {contact.name} <{contact.email}>\n"
+                f"Subject: {contact.subject}\n\n"
+                f"{contact.message}"
+            )
+            telegram_messages(telegram_text)
 
+            form.save()
+            return redirect('success')
     else:
-        form = ContactFormModelForm()
+        form = ContactForModelForm()
 
     return render(request, 'main/contact.html', {'form': form})
-
 
 def contact_success(request):
     return render(request, 'main/success.html')
@@ -70,13 +83,35 @@ def dashboard(request):
         "posts": posts
     })
 
-
 def blog_list(request):
     posts = BlogPost.objects.all().order_by("-created_at")
     return render(request, "main/blog_list.html", {"posts": posts})
-
 
 def blog_detail(request, pk):
     post = get_object_or_404(BlogPost, pk=pk)
     return render(request, "main/blog_detail.html", {"post": post})
 
+@require_POST
+@csrf_exempt
+def contact_webhook(request):
+    try:
+        data = json.loads(request.body.decode("utf-8"))
+    except Exception:
+        data = request.POST
+    
+    name = data.get("name", "Anonymous")
+    email = data.get("email", "no-email")
+    phone = data.get("phone", "")
+    subject = data.get("subject", "No Subject")
+    message = data.get("message", "")
+
+    text = (
+        f"👋 New portfolio message\n\n"
+        f"From: {name}\n"
+        f"Email: {email}\n"
+        f"Phone: {phone}\n"
+        f"Subject: {subject}\n\n"
+        f"Message:\n{message}"
+    )
+    telegram_messages(text)
+    return JsonResponse({"ok": True})

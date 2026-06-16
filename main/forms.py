@@ -8,7 +8,7 @@ from .models import ContactForm, BlogPost
 class ContactForModelForm(forms.ModelForm):
 	class Meta:
 		model= ContactForm
-		fields = ['name', 'email', 'subject', 'message']
+		fields = ['name', 'email', 'phone','subject', 'message']
 
 
 

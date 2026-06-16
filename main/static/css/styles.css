@@ -85,6 +85,7 @@ https://templatemo.com/tm-596-electric-xtra
             animation: float-rotate 22s ease-in-out infinite;
         }
 
+
         @keyframes float-rotate {
             0%, 100% {
                 transform: translateY(0) rotate(0deg) scale(1);
@@ -186,6 +187,7 @@ https://templatemo.com/tm-596-electric-xtra
             align-items: center;
         }
 
+        
         .logo-link {
             display: flex;
             align-items: center;
@@ -1137,7 +1139,7 @@ https://templatemo.com/tm-596-electric-xtra
 
 
 /*Dshboard */
-}
+
 
 .dashboard-container {
     max-width: 900px;
@@ -1286,6 +1288,12 @@ label {
   color: #ccc;
   font-weight: 400;
 }
+
+/* .myimg{
+height:30px;
+border-top-right-radius: 10px;
+border-bottom-left-radius: 10px
+} */
 
 .detail-image img {
   width: 100%;

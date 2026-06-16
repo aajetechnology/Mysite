@@ -7,5 +7,6 @@ urlpatterns = [
     path("blog_list/", views.blog_list, name="post_list"),
     path("blog/<int:pk>/", views.blog_detail, name="post_detail"), 
     path("dashboard/", views.dashboard, name="dashboard"),  
+    path("api/contact/", views.contact_webhook, name="api_contact"),
     
 ]
